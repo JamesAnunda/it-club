@@ -2,7 +2,7 @@
  * It-club v.2.0.6
  * Copyright (c) 2018 Foo.
  *
- * Author: Joseph Wright (joseph@codedwright.com).
+ * Author: James Anunda (cjanunda@gmail.com).
  */
 
 var app = angular.module('itclub', ['ngRoute', 'ngAnimate', 'ngSanitize', 'ngMap']);
@@ -28,7 +28,9 @@ app.controller('EventsCtrl', ['$scope', '$http', 'NgMap', function($scope, $http
     //     }],
     //     location: '',
     //     thumbnail_url: ''
-    // }];
+	// }];
+	
+	/* Event API form OrgSync */
     events.one = "one";
     $http.get("https://api.orgsync.com/api/v3/portals/139217/events.json?key=saQO-P_BwlyykPjd0Et9woSjp_IgtCbnK1NhHcCBdA0&per_page=100&upcoming=true")
         .then(function(results) {
@@ -70,6 +72,7 @@ app.controller('NewsCtrl', ['$scope', '$http', function($scope, $http) {
 app.controller('TrainingCtrl', ['$scope', function($scope) {
 	
 }]);
+
 //pull json from orgsync
 app.factory('photos', ['$http', function($http) {
 	return $http.get('https://api.unsplash.com/photos/?client_id=5badc84bef4c17ed1a47d6a12d01048984856830bb0ef6a9f446a0005378bd32')
@@ -211,6 +214,8 @@ app.directive('smoothScroll', ['$log', '$timeout', '$window',
 		};
 	}
 ])
+
+/* Routes */
 app.config(['$locationProvider', '$routeProvider',
 		function config($locationProvider, $routeProvider) {
 			
